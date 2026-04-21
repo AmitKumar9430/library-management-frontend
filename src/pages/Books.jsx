@@ -64,13 +64,13 @@ export default function Books() {
     <>
       <div className="card">
         <div className="card-header">
-          <span className="card-title">📚 All Books ({books.length})</span>
+          <span className="card-title"> All Books ({books.length})</span>
           <button className="btn btn-primary" onClick={openAdd}>+ Add Book</button>
         </div>
 
         <div className="search-bar">
           <div className="search-input-wrap">
-            <span className="search-icon">🔍</span>
+            <span className="search-icon"></span>
             <input placeholder="Search by title, author or ISBN…"
                    value={search} onChange={e => setSearch(e.target.value)} />
           </div>
@@ -80,7 +80,7 @@ export default function Books() {
           <div className="loading"><div className="spinner" /> Loading books…</div>
         ) : filtered.length === 0 ? (
           <div className="empty-state">
-            <div className="icon">📭</div>
+            <div className="icon"></div>
             <p>No books found.</p>
           </div>
         ) : (
@@ -109,8 +109,8 @@ export default function Books() {
                     </td>
                     <td>
                       <div className="action-buttons">
-                        <button className="btn btn-sm btn-warning" onClick={() => openEdit(book)}>✏️ Edit</button>
-                        <button className="btn btn-sm btn-danger"  onClick={() => remove(book.id)}>🗑️ Delete</button>
+                        <button className="btn btn-sm btn-warning" onClick={() => openEdit(book)}>✏ Edit</button>
+                        <button className="btn btn-sm btn-danger"  onClick={() => remove(book.id)}>🗑 Delete</button>
                       </div>
                     </td>
                   </tr>

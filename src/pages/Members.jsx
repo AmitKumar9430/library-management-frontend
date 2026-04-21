@@ -62,7 +62,7 @@ export default function Members() {
 
         <div className="search-bar">
           <div className="search-input-wrap">
-            <span className="search-icon">🔍</span>
+            <span className="search-icon"></span>
             <input placeholder="Search by name, email or phone…"
                    value={search} onChange={e => setSearch(e.target.value)} />
           </div>
@@ -99,8 +99,8 @@ export default function Members() {
                     </td>
                     <td>
                       <div className="action-buttons">
-                        <button className="btn btn-sm btn-warning" onClick={() => openEdit(m)}>✏️ Edit</button>
-                        <button className="btn btn-sm btn-danger"  onClick={() => remove(m.id)}>🗑️ Delete</button>
+                        <button className="btn btn-sm btn-warning" onClick={() => openEdit(m)}>✏ Edit</button>
+                        <button className="btn btn-sm btn-danger"  onClick={() => remove(m.id)}>🗑 Delete</button>
                       </div>
                     </td>
                   </tr>
@@ -115,7 +115,7 @@ export default function Members() {
         <div className="modal-overlay" onClick={e => e.target === e.currentTarget && setModal(false)}>
           <div className="modal">
             <div className="modal-header">
-              <span className="modal-title">{editId ? '✏️ Edit Member' : '➕ Add Member'}</span>
+              <span className="modal-title">{editId ? '✏ Edit Member' : '➕ Add Member'}</span>
               <button className="modal-close" onClick={() => setModal(false)}>×</button>
             </div>
             {error && <div className="alert alert-error">{error}</div>}

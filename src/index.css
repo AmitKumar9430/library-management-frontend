@@ -1,6 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
 * {
   margin: 0;
   padding: 0;
@@ -121,7 +122,14 @@ body {
   box-shadow: 0 2px 8px rgba(67,97,238,0.4);
 }
 
-.nav-icon { font-size: 18px; width: 22px; text-align: center; }
+.nav-icon {
+  font-size: 16px;
+  width: 22px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
 .sidebar-footer {
   padding: 16px 12px;
@@ -220,6 +228,9 @@ body {
   font-size: 16px;
   font-weight: 700;
   color: var(--gray-900);
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
 /* ===== STAT CARDS ===== */
@@ -246,13 +257,14 @@ body {
   width: 52px; height: 52px;
   border-radius: 12px;
   display: flex; align-items: center; justify-content: center;
-  font-size: 24px; flex-shrink: 0;
+  flex-shrink: 0;
 }
 
-.stat-icon.blue   { background: rgba(67,97,238,0.12); }
-.stat-icon.purple { background: rgba(114,9,183,0.12); }
-.stat-icon.green  { background: rgba(6,214,160,0.12); }
-.stat-icon.orange { background: rgba(248,150,30,0.12); }
+/* Icon color variants */
+.stat-icon--blue   { background: rgba(67,97,238,0.12);  color: #4361ee; }
+.stat-icon--purple { background: rgba(114,9,183,0.12);  color: #7209b7; }
+.stat-icon--orange { background: rgba(248,150,30,0.12); color: #f8961e; }
+.stat-icon--green  { background: rgba(6,214,160,0.12);  color: #06d6a0; }
 
 .stat-value {
   font-size: 28px;
@@ -304,6 +316,12 @@ tbody td {
 
 tbody tr:last-child { border-bottom: none; }
 
+/* Muted ID column */
+.td--id {
+  color: var(--gray-500);
+  font-size: 12px;
+}
+
 /* ===== BUTTONS ===== */
 .btn {
   display: inline-flex;
@@ -320,16 +338,10 @@ tbody tr:last-child { border-bottom: none; }
   line-height: 1;
 }
 
-.btn-primary {
-  background: var(--primary);
-  color: #fff;
-}
+.btn-primary { background: var(--primary); color: #fff; }
 .btn-primary:hover { background: var(--primary-dark); transform: translateY(-1px); }
 
-.btn-success {
-  background: var(--success);
-  color: #fff;
-}
+.btn-success { background: var(--success); color: #fff; }
 .btn-success:hover { filter: brightness(0.9); }
 
 .btn-danger {
@@ -355,7 +367,7 @@ tbody tr:last-child { border-bottom: none; }
 }
 .btn-outline:hover { background: var(--primary); color: #fff; }
 
-/* ===== BADGE ===== */
+/* ===== BADGES ===== */
 .badge {
   display: inline-block;
   padding: 3px 10px;
@@ -364,10 +376,23 @@ tbody tr:last-child { border-bottom: none; }
   font-weight: 700;
   letter-spacing: 0.3px;
 }
-.badge-success { background: rgba(6,214,160,0.15); color: #059669; }
-.badge-danger  { background: rgba(239,35,60,0.12); color: #dc2626; }
-.badge-warning { background: rgba(248,150,30,0.15); color: #d97706; }
+
+.badge-success { background: rgba(6,214,160,0.15);  color: #059669; }
 .badge-info    { background: rgba(76,201,240,0.15); color: #0891b2; }
+
+/* Active loan = warning style */
+.badge--warn,
+.badge-warning {
+  background: rgba(248,150,30,0.15);
+  color: #d97706;
+}
+
+/* Overdue loan = danger style */
+.badge--danger,
+.badge-danger {
+  background: rgba(239,35,60,0.12);
+  color: #dc2626;
+}
 
 /* ===== FORMS ===== */
 .form-grid {
@@ -510,8 +535,8 @@ tbody tr:last-child { border-bottom: none; }
   left: 12px; top: 50%;
   transform: translateY(-50%);
   color: var(--gray-500);
-  font-size: 15px;
   pointer-events: none;
+  display: flex; align-items: center;
 }
 
 /* ===== LOGIN PAGE ===== */
@@ -538,7 +563,11 @@ tbody tr:last-child { border-bottom: none; }
   margin-bottom: 32px;
 }
 
-.login-logo .icon { font-size: 48px; display: block; margin-bottom: 10px; }
+.login-logo .icon {
+  font-size: 48px;
+  display: block;
+  margin-bottom: 10px;
+}
 
 .login-logo h1 {
   font-size: 22px;
@@ -623,8 +652,8 @@ tbody tr:last-child { border-bottom: none; }
   font-weight: 500;
   margin-bottom: 16px;
 }
-.alert-error   { background: rgba(239,35,60,0.1); color: #dc2626; border: 1px solid rgba(239,35,60,0.2); }
-.alert-success { background: rgba(6,214,160,0.1); color: #059669; border: 1px solid rgba(6,214,160,0.2); }
+.alert-error   { background: rgba(239,35,60,0.1);  color: #dc2626; border: 1px solid rgba(239,35,60,0.2); }
+.alert-success { background: rgba(6,214,160,0.1);  color: #059669; border: 1px solid rgba(6,214,160,0.2); }
 
 /* ===== EMPTY STATE ===== */
 .empty-state {
@@ -632,7 +661,13 @@ tbody tr:last-child { border-bottom: none; }
   padding: 48px 20px;
   color: var(--gray-500);
 }
-.empty-state .icon { font-size: 40px; margin-bottom: 10px; }
+.empty-state__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 12px;
+  color: var(--gray-300);
+}
 .empty-state p { font-size: 14px; }
 
 /* ===== LOADING ===== */

@@ -69,7 +69,7 @@ export default function Loans() {
     <>
       <div className="card">
         <div className="card-header">
-          <span className="card-title">🔖 Loan Records ({loans.length})</span>
+          <span className="card-title"> Loan Records ({loans.length})</span>
           <button className="btn btn-primary" onClick={openIssue}>+ Issue Book</button>
         </div>
 
@@ -79,7 +79,7 @@ export default function Loans() {
             <button key={f}
               onClick={() => setFilter(f)}
               className={`btn btn-sm ${filter === f ? 'btn-primary' : 'btn-outline'}`}>
-              {f === 'ALL' ? 'All' : f === 'ACTIVE' ? '🔖 Active' : '✅ Returned'}
+              {f === 'ALL' ? 'All' : f === 'ACTIVE' ? ' Active' : ' Returned'}
             </button>
           ))}
         </div>
@@ -120,12 +120,12 @@ export default function Loans() {
                         {loan.status === 'ACTIVE' && (
                           <button className="btn btn-sm btn-success"
                                   onClick={() => returnBook(loan.id)}>
-                            ↩️ Return
+                            ↩ Return
                           </button>
                         )}
                         <button className="btn btn-sm btn-danger"
                                 onClick={() => remove(loan.id)}>
-                          🗑️
+                          🗑 Delete
                         </button>
                       </div>
                     </td>
@@ -142,7 +142,7 @@ export default function Loans() {
         <div className="modal-overlay" onClick={e => e.target === e.currentTarget && setModal(false)}>
           <div className="modal">
             <div className="modal-header">
-              <span className="modal-title">📖 Issue Book</span>
+              <span className="modal-title">Issue Book</span>
               <button className="modal-close" onClick={() => setModal(false)}>×</button>
             </div>
             {error && <div className="alert alert-error">{error}</div>}
@@ -181,7 +181,7 @@ export default function Loans() {
 
             <div className="form-actions">
               <button className="btn btn-primary" onClick={issue} disabled={saving}>
-                {saving ? 'Processing…' : '📤 Issue Book'}
+                {saving ? 'Processing…' : ' Issue Book'}
               </button>
               <button className="btn btn-outline" onClick={() => setModal(false)}>Cancel</button>
             </div>
